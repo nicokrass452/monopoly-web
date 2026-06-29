@@ -1,0 +1,496 @@
+:root {
+  color: #172033;
+  background: #eef2f6;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button {
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #172033;
+  border-radius: 8px;
+  padding: 0.55rem 0.75rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+button.primary {
+  background: #0f766e;
+  border-color: #0f766e;
+  color: #fff;
+}
+
+input,
+select {
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0.55rem 0.65rem;
+  background: #fff;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.setup {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #dbeafe 0%, #f8fafc 45%, #dcfce7 100%);
+}
+
+.setupPanel {
+  width: min(760px, 100%);
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #dbe3ee;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(31, 41, 55, 0.12);
+}
+
+.setupPanel h1,
+.topBar h1 {
+  font-size: clamp(2rem, 5vw, 4.25rem);
+  line-height: 0.95;
+}
+
+.eyebrow {
+  color: #0f766e;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.setupControls,
+.playerSetup,
+.buttonRow {
+  display: flex;
+  gap: 0.75rem;
+  align-items: end;
+}
+
+.playerSetupList {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.playerSetup {
+  grid-template-columns: 1fr auto 9rem;
+}
+
+.checkRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.checkRow input[type="checkbox"] {
+  width: auto;
+}
+
+.appShell {
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  margin: 0 auto 1rem;
+  max-width: 1640px;
+}
+
+.gameLayout {
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) minmax(620px, 1fr) minmax(280px, 360px);
+  gap: 1rem;
+  max-width: 1640px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.panel {
+  background: #fff;
+  border: 1px solid #dbe3ee;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.panel h2 {
+  font-size: 1rem;
+}
+
+.panelHeader,
+.playerHeader,
+.modal header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.playerPanel,
+.rightRail,
+.actionPanel,
+.logPanel {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.playerCard {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.75rem;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.playerCard.active {
+  border-color: #0f766e;
+  box-shadow: inset 4px 0 0 #0f766e;
+}
+
+.playerCard.bankrupt {
+  opacity: 0.5;
+}
+
+.playerHeader > div {
+  display: grid;
+  flex: 1;
+}
+
+.playerHeader span {
+  color: #64748b;
+  font-size: 0.78rem;
+}
+
+.propertyChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.propertyChips button {
+  padding: 0.25rem 0.45rem;
+  font-size: 0.72rem;
+  border-width: 2px;
+}
+
+.muted {
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+
+.boardWrap {
+  width: 100%;
+  overflow: auto;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(11, minmax(54px, 1fr));
+  grid-template-rows: repeat(11, minmax(54px, 1fr));
+  min-width: 620px;
+  aspect-ratio: 1;
+  background: #d8eadf;
+  border: 6px solid #172033;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.boardCenter {
+  grid-area: 2 / 2 / 11 / 11;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 0.4rem;
+  padding: 2rem;
+  text-align: center;
+  background:
+    linear-gradient(45deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0)),
+    repeating-linear-gradient(90deg, rgba(15, 118, 110, 0.08), rgba(15, 118, 110, 0.08) 1px, transparent 1px, transparent 24px);
+}
+
+.boardCenter h2 {
+  font-size: clamp(2rem, 5vw, 5rem);
+  line-height: 0.95;
+}
+
+.space {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: 0.15rem;
+  min-width: 0;
+  min-height: 0;
+  padding: 0.25rem;
+  border: 1px solid #172033;
+  border-radius: 0;
+  background: #f8fafc;
+  overflow: hidden;
+}
+
+.space.corner {
+  background: #e0f2fe;
+}
+
+.spaceName {
+  font-size: clamp(0.55rem, 0.9vw, 0.78rem);
+  font-weight: 800;
+  line-height: 1.05;
+}
+
+.spaceIndex,
+.price,
+.buildings,
+.mortgageFlag {
+  color: #475569;
+  font-size: 0.62rem;
+}
+
+.stripe {
+  height: 0.45rem;
+  margin: -0.25rem -0.25rem 0;
+}
+
+.ownerDot {
+  position: absolute;
+  right: 0.25rem;
+  top: 0.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 999px;
+  border: 1px solid #fff;
+}
+
+.tokens {
+  position: absolute;
+  bottom: 0.2rem;
+  left: 0.2rem;
+  right: 0.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem;
+}
+
+.token {
+  display: inline-grid;
+  place-items: center;
+  width: 1.15rem;
+  height: 1.15rem;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.62rem;
+  font-weight: 900;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.token.large {
+  width: 2rem;
+  height: 2rem;
+  font-size: 0.95rem;
+}
+
+.currentToken {
+  outline: 3px solid #facc15;
+}
+
+.diceBox,
+.prompt,
+.buttonStack {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.diceBox {
+  background: #f1f5f9;
+  border-radius: 8px;
+  padding: 0.85rem;
+}
+
+.diceBox strong {
+  font-size: 1.75rem;
+}
+
+.prompt {
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 0.85rem;
+}
+
+.warning {
+  border-color: #f97316;
+  background: #fff7ed;
+}
+
+.logPanel ol {
+  display: grid;
+  gap: 0.45rem;
+  max-height: 360px;
+  overflow: auto;
+  padding-left: 1.25rem;
+  margin: 0;
+  color: #475569;
+  font-size: 0.86rem;
+}
+
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.58);
+}
+
+.modal {
+  width: min(720px, 100%);
+  max-height: min(90vh, 860px);
+  overflow: auto;
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 25px 80px rgba(15, 23, 42, 0.3);
+}
+
+.modal.compact {
+  width: min(460px, 100%);
+}
+
+.propertyBand {
+  height: 1rem;
+  border-radius: 8px;
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.45rem 1rem;
+}
+
+.detailGrid span {
+  color: #64748b;
+}
+
+.rentTable {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.4rem;
+}
+
+.rentTable span {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.45rem;
+  background: #f8fafc;
+}
+
+.tradeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.tradeGrid > div {
+  display: grid;
+  align-content: start;
+  gap: 0.65rem;
+}
+
+.confirmed {
+  border-color: #16a34a;
+  background: #dcfce7;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.rules {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+@media (max-width: 1180px) {
+  .gameLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .playerPanel {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .playerPanel h2 {
+    grid-column: 1 / -1;
+  }
+
+  .rightRail {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .appShell,
+  .setup {
+    padding: 0.75rem;
+  }
+
+  .topBar,
+  .setupControls,
+  .playerSetup,
+  .buttonRow,
+  .rightRail,
+  .playerPanel,
+  .tradeGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .board {
+    min-width: 680px;
+  }
+}
